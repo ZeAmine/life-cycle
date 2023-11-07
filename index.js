@@ -7,6 +7,10 @@ const numberToRoman = (number) => {
 
   let roman = "";
 
+  if (number === 0 || number % 1 !== 0) {
+    return "le format du chiffre n'est pas le bon";
+  }
+
   for (let i in romanNumbers) {
     while (number >= romanNumbers[i]) {
       roman += i;
@@ -16,4 +20,4 @@ const numberToRoman = (number) => {
   return roman;
 };
 
-console.log(numberToRoman(4));
+console.log(numberToRoman(5));
