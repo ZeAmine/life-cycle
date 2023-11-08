@@ -1,4 +1,8 @@
-const numberToRoman = (number) => {
+function numberToRoman(number: number) {
+  if (number % 1 !== 0 || number <= 0 || number >= 4000) {
+    throw new Error("le nombre doit être un entier strictement positif et compris entre 1 et 3999");
+  }
+
   const romanNumbers = {
     M: 1000,
     CM: 900,
@@ -17,10 +21,6 @@ const numberToRoman = (number) => {
 
   let roman = "";
 
-  if (number === 0 || number % 1 !== 0 || number < 0 || number >= 4000) {
-    return "le nombre doit être un entier strictement positif et compris entre 1 et 3999";
-  }
-
   for (let i in romanNumbers) {
     while (number >= romanNumbers[i]) {
       roman += i;
@@ -28,6 +28,6 @@ const numberToRoman = (number) => {
     }
   }
   return roman;
-};
+}
 
-console.log(numberToRoman(-1));
+console.log(numberToRoman(8));

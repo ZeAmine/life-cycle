@@ -1,6 +1,3 @@
-// @ts-ignore see https://github.com/jest-community/jest-extended#setup
-import * as matchers from "jest-extended";
-
 test("numberToRoman should convert integer to Roman numeral", () => {
   expect(numberToRoman(1)).toEqual("I");
   expect(numberToRoman(4)).toEqual("IV");
@@ -12,8 +9,8 @@ test("numberToRoman should convert integer to Roman numeral", () => {
 });
 
 test("numberToRoman should return error message for non-integer or zero", () => {
-  expect(numberToRoman(0)).toEqual("le format du chiffre n'est pas le bon");
-  expect(numberToRoman(3.14)).toEqual("le format du chiffre n'est pas le bon");
+  expect(numberToRoman(0)).toEqual("le nombre doit être un entier strictement positif et compris entre 1 et 3999");
+  expect(numberToRoman(3.14)).toEqual("le nombre doit être un entier strictement positif et compris entre 1 et 3999");
 });
 
 test("numberToRoman should handle large numbers", () => {
@@ -22,5 +19,5 @@ test("numberToRoman should handle large numbers", () => {
 });
 
 test("numberToRoman should handle negative numbers", () => {
-  expect(numberToRoman(-1)).toEqual("le format du chiffre n'est pas le bon");
+  expect(numberToRoman(-1)).toEqual("le nombre doit être un entier strictement positif et compris entre 1 et 3999");
 });
