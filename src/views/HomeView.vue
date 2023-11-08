@@ -6,7 +6,7 @@
         <input type="number" id="arabicNbr" v-model="arabicNbr" required />
         <p>{{ romanNbr }}</p> -->
 
-        <label for="romanNbr">Choissez un chiffre roman*</label>
+        <label for="romanNbr">Choissez un chiffre romain*</label>
         <input type="text" id="romanNbr" v-model="romanNbr" @input="checkRomanValue" required />
         <div class="result">
           <!-- <p>{{ romanNbr }}</p> -->
@@ -22,7 +22,7 @@
 <script lang="ts" setup>
 import { ref, watchEffect } from "vue";
 
-let arabicNbr = ref<number>("");
+let arabicNbr = ref<number>();
 let romanNbr = ref<string>("");
 let isValid = ref<boolean>(false);
 
@@ -153,6 +153,10 @@ watchEffect(() => {
         border: 2px solid #d4d4d4;
         padding: 1rem 1.75rem;
         margin-top: 1rem;
+
+        &:focus {
+          border-color: #000;
+        }
       }
 
       .result {
