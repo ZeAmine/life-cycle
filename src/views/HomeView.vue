@@ -23,7 +23,7 @@
 import { ref, watchEffect } from "vue";
 
 let arabicNbr = ref<number>("");
-let romanNbr = ref<number>("");
+let romanNbr = ref<string>("");
 let isValid = ref<boolean>(false);
 
 function numberToRoman(number: number): string {
@@ -87,6 +87,7 @@ function romanToNumber(roman: string): number {
   };
 
   let number = 0;
+  roman = roman.toUpperCase();
 
   for (let i = 0; i < roman.length; i++) {
     const current = romanNumbers[roman[i]];
