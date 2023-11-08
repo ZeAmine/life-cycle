@@ -12,3 +12,5 @@
 
 - [x] Vérifier les types donnés en paramètres
 - [x] Ajout de conditions
+- [ ] Ajouter une description visuel sur le site de deploiement
+- [ ] Mettre en place Trello
