@@ -17,8 +17,8 @@ const numberToRoman = (number) => {
 
   let roman = "";
 
-  if (number === 0 || number % 1 !== 0) {
-    return "le format du chiffre n'est pas le bon";
+  if (number === 0 || number % 1 !== 0 || number < 0 || number >= 4000) {
+    return "le nombre doit être un entier strictement positif et compris entre 1 et 3999";
   }
 
   for (let i in romanNumbers) {
@@ -30,4 +30,4 @@ const numberToRoman = (number) => {
   return roman;
 };
 
-console.log(numberToRoman(4000));
+console.log(numberToRoman(-1));
