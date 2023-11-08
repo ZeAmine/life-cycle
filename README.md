@@ -10,4 +10,5 @@
 
 ### A Faire
 
-- [ ] Vérifier les types donnés en paramètres
+- [x] Vérifier les types donnés en paramètres
+- [x] Ajout de conditions
