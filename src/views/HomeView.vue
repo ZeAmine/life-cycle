@@ -6,19 +6,25 @@
         <input type="number" id="arabicNbr" v-model="arabicNbr" required />
         <p>{{ romanNbr }}</p> -->
 
-        <label for="romanNbr">Choissez un chiffre (1 à 3999)</label>
-        <input type="text" id="romanNbr" v-model="romanNbr" required />
-        <p>{{ arabicNbr }}</p>
+        <label for="romanNbr">Choissez un chiffre roman*</label>
+        <input type="text" id="romanNbr" v-model="romanNbr" @input="checkRomanValue" required />
+        <div class="result">
+          <!-- <p>{{ romanNbr }}</p> -->
+          <!-- <p>➔</p> -->
+          <p>{{ arabicNbr }}</p>
+        </div>
       </div>
+      <span class="info">* le chiffre doit être un entier strictement positif et compris entre 1 et 3999</span>
     </div>
   </main>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, watchEffect } from "vue";
+import { ref, watchEffect } from "vue";
 
-const arabicNbr = ref<number>(1);
-const romanNbr = ref<number>("V");
+let arabicNbr = ref<number>("");
+let romanNbr = ref<number>("");
+let isValid = ref<boolean>(false);
 
 function numberToRoman(number: number): string {
   if (number % 1 !== 0 || number <= 0 || number >= 4000) {
@@ -51,6 +57,16 @@ function numberToRoman(number: number): string {
   }
 
   return (romanNbr.value = roman);
+}
+
+function checkRomanValue() {
+  const regex = /^(M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})|)$/;
+
+  if (regex.test(romanNbr.value)) {
+    isValid.value = true;
+  } else {
+    isValid.value = false;
+  }
 }
 
 function romanToNumber(roman: string): number {
@@ -87,18 +103,7 @@ function romanToNumber(roman: string): number {
 }
 
 watchEffect(() => {
-  if (arabicNbr.value) {
-    numberToRoman(arabicNbr.value);
-  }
-
-  if (romanNbr.value) {
-    romanToNumber(romanNbr.value);
-  }
-});
-
-onMounted(() => {
-  numberToRoman(1);
-  romanToNumber("V");
+  romanToNumber(romanNbr.value);
 });
 </script>
 
@@ -108,5 +113,62 @@ onMounted(() => {
   display: block;
   width: 100%;
   height: 100%;
+
+  .home {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    // justify-content: center;
+    width: 100%;
+    height: 100%;
+    // pointer-events: none;
+
+    .info {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .block {
+      display: flex;
+      flex-direction: column;
+      width: 40rem;
+      height: 30rem;
+      margin: 0 auto;
+      margin-top: 20rem;
+
+      label {
+        font-size: 1rem;
+        text-transform: uppercase;
+      }
+
+      input {
+        outline: none;
+        border-radius: 0;
+        border: 2px solid #d4d4d4;
+        padding: 1rem 1.75rem;
+        margin-top: 1rem;
+      }
+
+      .result {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: auto;
+        margin-top: 4rem;
+
+        p {
+          font-family: "Playfair Display", serif;
+          font-size: 7rem;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
 }
 </style>

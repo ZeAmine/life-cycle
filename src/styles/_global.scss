@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+
 html {
-  font-family: "Arial", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 62.5%;
   box-sizing: border-box;
   scroll-behavior: initial;
@@ -13,7 +15,7 @@ body {
   min-height: 100vh;
   font-size: 1.6rem;
   color: black;
-  background: white;
+  background: #f7f7f7;
   text-rendering: optimizeLegibility;
   user-select: none;
 }
