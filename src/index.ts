@@ -1,11 +1,13 @@
-const numberToRoman = (number: number) => {
+const numberToRoman = (number) => {
   const romanNumbers = {
     M: 1000,
     CM: 900,
     D: 500,
     CD: 400,
     C: 100,
+    XCIX: 99,
     L: 50,
+    XLIX: 49,
     X: 10,
     IX: 9,
     V: 5,
@@ -28,4 +30,4 @@ const numberToRoman = (number: number) => {
   return roman;
 };
 
-console.log(numberToRoman(99));
+console.log(numberToRoman(4000));
