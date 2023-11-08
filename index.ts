@@ -1,4 +1,4 @@
-const numberToRoman = (number) => {
+const numberToRoman = (number: number) => {
   const romanNumbers = {
     M: 1000,
     CM: 900,
