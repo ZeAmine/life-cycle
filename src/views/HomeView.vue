@@ -1,4 +1,13 @@
-function numberToRoman(number: number) {
+<template>
+  <main class="main">
+    <h1>Hello</h1>
+  </main>
+</template>
+
+<script lang="ts" setup>
+import { onMounted } from "vue";
+
+function numberToRoman(number: number): string {
   if (number % 1 !== 0 || number <= 0 || number >= 4000) {
     throw new Error("le nombre doit être un entier strictement positif et compris entre 1 et 3999");
   }
@@ -30,4 +39,16 @@ function numberToRoman(number: number) {
   return roman;
 }
 
-console.log(numberToRoman(8));
+onMounted(() => {
+  numberToRoman(5);
+});
+</script>
+
+<style lang="scss" scoped>
+.main {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+</style>
