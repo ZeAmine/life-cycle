@@ -110,7 +110,8 @@ import axios from "axios";
 
 const roman = ref("");
 const result = ref<number | null>(null);
-const cache = {};
+const cacheKey = "romanCache";
+let cache = JSON.parse(localStorage.getItem(cacheKey) || "{}");
 
 const convertRoman = async () => {
   const input = roman.value.toUpperCase();
@@ -123,6 +124,7 @@ const convertRoman = async () => {
       const convertedResult = response.data.result;
       cache[input] = convertedResult;
       result.value = convertedResult;
+      localStorage.setItem(cacheKey, JSON.stringify(cache));
     } catch (error) {
       console.error("Error converting Roman to Number:", error);
       result.value = null;
@@ -131,7 +133,9 @@ const convertRoman = async () => {
   }
 };
 
-convertRoman();
+onMounted(() => {
+  convertRoman();
+});
 </script>
 <style lang="scss" scoped>
 .main {
