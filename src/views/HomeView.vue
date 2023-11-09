@@ -6,20 +6,16 @@
         <input type="number" id="arabicNbr" v-model="arabicNbr" required />
         <p>{{ romanNbr }}</p> -->
 
-        <label for="romanNbr">Choissez un chiffre romain*</label>
-        <input type="text" id="romanNbr" v-model="romanNbr" @input="checkRomanValue" required />
-        <div class="result">
-          <!-- <p>{{ romanNbr }}</p> -->
-          <!-- <p>➔</p> -->
-          <p>{{ arabicNbr }}</p>
-        </div>
+        <h1>Choisir un nombre romain</h1>
+        <input v-model="roman" @input="convertRoman" placeholder="Enter Roman numeral" />
+        <p v-if="result !== null" class="result">Result: {{ result }}</p>
       </div>
       <span class="info">* le chiffre doit être un entier strictement positif et compris entre 1 et 3999</span>
     </div>
   </main>
 </template>
 
-<script lang="ts" setup>
+<!-- <script lang="ts" setup>
 import { ref, watchEffect } from "vue";
 
 let arabicNbr = ref<number>();
@@ -106,8 +102,37 @@ function romanToNumber(roman: string): number {
 watchEffect(() => {
   romanToNumber(romanNbr.value);
 });
-</script>
+</script> -->
 
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
+import axios from "axios";
+
+const roman = ref("");
+const result = ref<number | null>(null);
+const cache = {};
+
+const convertRoman = async () => {
+  const input = roman.value.toUpperCase();
+
+  if (input in cache) {
+    result.value = cache[input];
+  } else {
+    try {
+      const response = await axios.post("https://life-cycle-api.onrender.com/convert", { roman: input });
+      const convertedResult = response.data.result;
+      cache[input] = convertedResult;
+      result.value = convertedResult;
+    } catch (error) {
+      console.error("Error converting Roman to Number:", error);
+      result.value = null;
+      cache[input] = null;
+    }
+  }
+};
+
+convertRoman();
+</script>
 <style lang="scss" scoped>
 .main {
   position: relative;
@@ -171,6 +196,9 @@ watchEffect(() => {
           font-family: "Playfair Display", serif;
           font-size: 7rem;
           text-transform: uppercase;
+        }
+        .error {
+          color: red;
         }
       }
     }
