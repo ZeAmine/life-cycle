@@ -30,6 +30,7 @@ Then go to localhost
 
 - Trello: [link](https://trello.com/b/cwqHeBkv/gestion-cycle-de-vie)
 - Prod: [link](https://lifecyle.netlify.app/)
+- Retrospective: [link](https://miro.com/welcomeonboard/RUlZdVhnR2w4MlU5U2RzMFM3Vkpia0pDUTJoNG9BaU92c3VMaEVFN0FVU1BoUmExWUNsU2NqdVVkaFFoUFVRV3wzMDc0NDU3MzY1NjI2NjU1NDU4fDI=?share_link_id=822308324419)
 
 ## Contributions
 
