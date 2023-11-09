@@ -26,12 +26,16 @@ npm run dev
 
 Then go to localhost
 
-## Documentations
+## Links
 
-### Lien Trello
+- Trello: [link](https://trello.com/b/cwqHeBkv/gestion-cycle-de-vie)
+- Prod: [link](https://lifecyle.netlify.app/)
 
-- https://trello.com/b/cwqHeBkv/gestion-cycle-de-vie
+## Contributions
 
-### Lien Prod
+You can contribute to this project, any help is welcome.
 
-- https://lifecyle.netlify.app/
+For major changes, you should open an issue and then we will discuss on what you'd like to change. 😊
+
+> [!note]
+> Don't forget to udpate the tests
