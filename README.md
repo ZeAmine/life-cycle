@@ -13,12 +13,12 @@ You pass a number of your choice and the algorithm returns the roman's form.
 
 ```bash
 git clone https://github.com/ZeAmine/life-cycle.git
-cd project
+cd life-cycle
 npm i
 ```
 
 This project is using Vue3 with Vite.
-To start in dev
+To start in dev:
 
 ```bash
 npm run dev
